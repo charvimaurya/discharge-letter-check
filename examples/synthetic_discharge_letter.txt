@@ -1,0 +1,28 @@
+*** SYNTHETIC EXAMPLE - NOT A REAL PATIENT - NOT MEDICAL ADVICE ***
+Every name, medicine, date and instruction below is invented for software testing.
+
+EXAMPLE GENERAL HOSPITAL (fictional)
+DISCHARGE LETTER
+
+Patient: Test Patient (synthetic)
+Date of discharge: 16 October 2026
+Procedure: Example knee procedure (synthetic)
+
+MEDICINES
+Examplamol 500 mg tablets: take 2 tablets 4 times a day for 14 days.
+Samplexin 30 mg tablets: take 1 or 2 tablets (handwritten amendment, unclear) only if needed for pain.
+
+DAILY ACTIVITIES
+Do your knee exercises 3 times a day.
+Ice pack on the knee for 20 minutes after each set of exercises.
+
+DIET
+Drink 6 to 8 glasses of water or other fluids a day.
+
+FOLLOW-UP APPOINTMENTS
+Wound check with the practice nurse on 23 October 2026.
+
+WARNING SIGNS
+If your wound becomes red, hot or swollen, contact your care team.
+
+*** END OF SYNTHETIC EXAMPLE ***

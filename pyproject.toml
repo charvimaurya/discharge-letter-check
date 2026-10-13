@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "discharge-letter-check"
+version = "0.1.0"
+description = "Flag missing or uncertain items in instructions extracted from hospital discharge letters. Synthetic data only. Not a medical device."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Charvi Maurya" }]
+keywords = ["discharge", "validation", "extraction", "json-schema"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/charvimaurya/discharge-letter-check"
+Issues = "https://github.com/charvimaurya/discharge-letter-check/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+discharge_letter_check = ["schemas/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

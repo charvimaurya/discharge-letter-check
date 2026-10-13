@@ -1,0 +1,170 @@
+{
+  "notice": "Synthetic data only. Not a medical device.",
+  "document_accepted": true,
+  "ingestion_status": "ready",
+  "needs_confirmation": [
+    {
+      "category": "medications",
+      "id": "med_2"
+    }
+  ],
+  "dropped_diet_advice": [
+    "Eat five portions of fruit a day."
+  ],
+  "recovery_state": {
+    "patient_id": "synthetic-patient-001",
+    "document_id": "synthetic-letter-001",
+    "discharge_date": "2026-10-16",
+    "first_name": null,
+    "medications": [
+      {
+        "id": "med_1",
+        "name": "Examplamol",
+        "strength": "500 mg",
+        "form": "tablets",
+        "dose": "2 tablets",
+        "site": null,
+        "times_per_day": 4,
+        "time_of_day": [],
+        "as_needed": false,
+        "as_needed_reason": null,
+        "max_per_day": null,
+        "instructions": null,
+        "duration_text": "for 14 days",
+        "status": "pending",
+        "needs_confirmation": false,
+        "source": {
+          "document_id": "synthetic-letter-001",
+          "snippet": "Examplamol 500 mg tablets: take 2 tablets 4 times a day for 14 days.",
+          "page": 1,
+          "read_from_image": false
+        }
+      },
+      {
+        "id": "med_2",
+        "name": "Samplexin",
+        "strength": "30 mg",
+        "form": "tablets",
+        "dose": "[?1 or 2 tablets?]",
+        "site": null,
+        "times_per_day": null,
+        "time_of_day": [],
+        "as_needed": true,
+        "as_needed_reason": "for pain",
+        "max_per_day": null,
+        "instructions": null,
+        "duration_text": null,
+        "status": "pending",
+        "needs_confirmation": true,
+        "source": {
+          "document_id": "synthetic-letter-001",
+          "snippet": "Samplexin 30 mg tablets: take 1 or 2 tablets (handwritten amendment, unclear) only if needed for pain.",
+          "page": 1,
+          "read_from_image": false
+        }
+      }
+    ],
+    "tasks": [
+      {
+        "id": "task_1",
+        "description": "Do your knee exercises 3 times a day.",
+        "kind": "exercise",
+        "times_per_day": 3,
+        "time_of_day": [],
+        "clock_times": [],
+        "details": null,
+        "duration_text": null,
+        "status": "pending",
+        "needs_confirmation": false,
+        "source": {
+          "document_id": "synthetic-letter-001",
+          "snippet": "Do your knee exercises 3 times a day.",
+          "page": 1,
+          "read_from_image": false
+        },
+        "follow_on": null
+      },
+      {
+        "id": "task_2",
+        "description": "Ice pack on the knee for 20 minutes after each set of exercises.",
+        "kind": "care",
+        "times_per_day": null,
+        "time_of_day": [],
+        "clock_times": [],
+        "details": null,
+        "duration_text": null,
+        "status": "pending",
+        "needs_confirmation": false,
+        "source": {
+          "document_id": "synthetic-letter-001",
+          "snippet": "Ice pack on the knee for 20 minutes after each set of exercises.",
+          "page": 1,
+          "read_from_image": false
+        },
+        "follow_on": {
+          "after_task_id": "task_1",
+          "duration_minutes": 20,
+          "source": {
+            "document_id": "synthetic-letter-001",
+            "snippet": "Ice pack on the knee for 20 minutes after each set of exercises.",
+            "page": 1,
+            "read_from_image": false
+          }
+        }
+      }
+    ],
+    "appointments": [
+      {
+        "id": "appt_1",
+        "title": "Wound check with the practice nurse",
+        "date": "2026-10-23",
+        "time": null,
+        "location": null,
+        "conflicting_dates": [],
+        "status": "pending",
+        "needs_confirmation": false,
+        "source": {
+          "document_id": "synthetic-letter-001",
+          "snippet": "Wound check with the practice nurse on 23 October 2026.",
+          "page": 1,
+          "read_from_image": false
+        }
+      }
+    ],
+    "restrictions": [],
+    "monitoring": [],
+    "warning_signs": [
+      {
+        "id": "warning_1",
+        "text": "If your wound becomes red, hot or swollen",
+        "action": "contact your care team",
+        "urgency": "contact_care_team",
+        "needs_confirmation": false,
+        "source": {
+          "document_id": "synthetic-letter-001",
+          "snippet": "If your wound becomes red, hot or swollen, contact your care team.",
+          "page": 1,
+          "read_from_image": false
+        }
+      }
+    ],
+    "diet_advice": [
+      {
+        "id": "diet_1",
+        "text": "Drink 6 to 8 glasses of water or other fluids a day.",
+        "kind": "advice",
+        "needs_confirmation": false,
+        "source": {
+          "document_id": "synthetic-letter-001",
+          "snippet": "Drink 6 to 8 glasses of water or other fluids a day.",
+          "page": 1,
+          "read_from_image": false
+        }
+      }
+    ],
+    "ingestion_status": "ready",
+    "pending_checkin": null,
+    "last_updated": null,
+    "timezone": "Europe/London"
+  }
+}
