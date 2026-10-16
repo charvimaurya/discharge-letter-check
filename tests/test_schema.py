@@ -1,6 +1,7 @@
 """The extraction JSON schema ships inside the installed package and is loaded from there."""
 
 import json
+import re
 import subprocess
 import sys
 from importlib import resources
@@ -91,3 +92,34 @@ def test_schema_allows_unstated_details_to_be_null():
     assert medication["required"] == ["name", "source"]
     for optional in ["strength", "dose", "duration_text"]:
         assert {"type": "null"} in medication["properties"][optional]["anyOf"]
+
+
+def _clock_time_items():
+    return load_schema()["properties"]["tasks"]["items"]["properties"]["clock_times"]["items"]
+
+
+def _is_clock_time(value):
+    # fullmatch and ASCII digits, as a JSON Schema validator reads the pattern.
+    return re.fullmatch(_clock_time_items()["pattern"], value, re.ASCII) is not None
+
+
+def test_clock_times_use_a_pattern_instead_of_the_time_format():
+    items = _clock_time_items()
+
+    assert items == {"pattern": r"^([01]\d|2[0-3]):[0-5]\d$", "type": "string"}
+
+
+def test_clock_time_accepts_hours_and_minutes():
+    assert _is_clock_time("07:30")
+
+
+def test_clock_time_rejects_an_invalid_hour():
+    assert not _is_clock_time("25:30")
+
+
+def test_clock_time_rejects_an_invalid_minute():
+    assert not _is_clock_time("07:60")
+
+
+def test_clock_time_rejects_a_missing_leading_zero():
+    assert not _is_clock_time("7:30")

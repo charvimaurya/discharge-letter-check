@@ -278,7 +278,7 @@
           "clock_times": {
             "description": "Clock times the letter states for this task, for example 07:30 and 15:00. Empty if the letter gives none. Never work a clock time out from a word like 'morning'.",
             "items": {
-              "format": "time",
+              "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
               "type": "string"
             },
             "title": "Clock Times",
