@@ -9,6 +9,7 @@ from discharge_letter_check.document_validation import (
     validate_discharge_document,
 )
 from discharge_letter_check.models import (
+    Allergy,
     Appointment,
     DietAdvice,
     FollowOn,
@@ -23,6 +24,7 @@ from discharge_letter_check.models import (
 from discharge_letter_check.schema import SCHEMA_FILENAME, load_schema, schema_text
 from discharge_letter_check.validator import (
     contains_uncertainty,
+    validate_allergies,
     validate_appointments,
     validate_diet_advice,
     validate_follow_ons,
@@ -34,9 +36,13 @@ from discharge_letter_check.validator import (
     validate_warning_signs,
 )
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
+
+# Version of the bundled extraction schema.
+SCHEMA_VERSION = "0.2.0"
 
 __all__ = [
+    "Allergy",
     "Appointment",
     "DietAdvice",
     "FollowOn",
@@ -45,6 +51,7 @@ __all__ = [
     "RecoveryState",
     "Restriction",
     "SCHEMA_FILENAME",
+    "SCHEMA_VERSION",
     "Source",
     "Task",
     "WRONG_DOCUMENT_MESSAGE",
@@ -54,6 +61,7 @@ __all__ = [
     "contains_uncertainty",
     "load_schema",
     "schema_text",
+    "validate_allergies",
     "validate_appointments",
     "validate_diet_advice",
     "validate_discharge_document",

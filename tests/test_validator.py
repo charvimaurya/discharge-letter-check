@@ -85,10 +85,12 @@ def test_recovery_state_keeps_the_fields_a_caller_stores_alongside_the_plan():
         "medications", "tasks", "appointments",
         "restrictions", "monitoring", "warning_signs", "diet_advice",
         "ingestion_status", "pending_checkin", "last_updated", "timezone",
+        "allergies",
     ]
     assert (state.first_name, state.pending_checkin, state.last_updated) == (None, None, None)
     assert state.timezone == "Europe/London"
     assert state.ingestion_status == "processing"
+    assert state.allergies == []
 
 
 def test_validation_leaves_the_caller_fields_untouched():

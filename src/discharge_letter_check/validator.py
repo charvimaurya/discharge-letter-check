@@ -21,6 +21,7 @@ def validate_recovery_plan(
     validate_restrictions(state)
     validate_monitoring(state)
     validate_warning_signs(state)
+    validate_allergies(state)
     validate_diet_advice(state, document_text)
     validate_follow_ons(state, document_text)
     state.ingestion_status = "ready"
@@ -143,3 +144,11 @@ def validate_warning_signs(state: RecoveryState):
             warning.needs_confirmation = True
         if warning.urgency not in {"contact_care_team", "emergency"}:
             warning.needs_confirmation = True
+
+
+def validate_allergies(state: RecoveryState):
+    for allergy in state.allergies:
+        if not allergy.text:
+            allergy.needs_confirmation = True
+        if contains_uncertainty(allergy.text):
+            allergy.needs_confirmation = True

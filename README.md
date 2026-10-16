@@ -115,7 +115,7 @@ unclear and decide.
 | Situation | What the checker does |
 | --- | --- |
 | A field contains `[?` (for example `[?1 or 2 tablets?]`) or `[unreadable]` (any letter case) | Flags the item. The text, marker included, is kept unchanged. |
-| A required text is empty or missing: medication `name`, task `description`, appointment `title`, restriction `text`, monitoring `what`, warning sign `text` or `action` | Flags the item. Nothing is filled in. |
+| A required text is empty or missing: medication `name`, task `description`, appointment `title`, restriction `text`, monitoring `what`, warning sign `text` or `action`, allergy `text` | Flags the item. Nothing is filled in. |
 | An optional detail is absent (for example no `dose` or no `strength`) | Not flagged, and not invented. Absence is not treated as an error. |
 | An appointment lists `conflicting_dates` | Flags the appointment. Every date is kept; none is chosen. |
 | A warning sign's `urgency` is not `contact_care_team` or `emergency` | Flags the warning sign. The value is kept unchanged. |
@@ -166,6 +166,21 @@ The two are close but not identical: the dataclasses add an `id` to each item an
 Turning schema-shaped JSON into the dataclasses is left to the caller; this package
 does not include that step, and it does not validate JSON against the schema.
 
+### Allergies
+
+The schema has an optional top-level `allergies` list. Each item has two fields and
+no others:
+
+- `text`: the allergy as the letter writes it, at least one character long;
+- `source`: where it came from, with the letter's own sentence in `snippet`, the same
+  as every other section.
+
+Data with no `allergies` list is still valid, and `RecoveryState.allergies` is an empty
+list unless you fill it. The checker flags an allergy when its text is missing or
+carries an uncertainty marker. It never drops an allergy and never changes its text.
+`allergies` is the last field of `RecoveryState`, so code that passes the other fields
+by position keeps working.
+
 ## Public API
 
 | Name | Purpose |
@@ -173,10 +188,10 @@ does not include that step, and it does not validate JSON against the schema.
 | `validate_discharge_document(text)` | Raises `WrongDocumentError` unless the text reads as a discharge letter. |
 | `WrongDocumentError`, `WRONG_DOCUMENT_MESSAGE` | The error raised (a `ValueError`) and its message. |
 | `validate_recovery_plan(state, document_text=None)` | Runs every check and sets `ingestion_status` to `"ready"`. |
-| `validate_medications`, `validate_tasks`, `validate_appointments`, `validate_restrictions`, `validate_monitoring`, `validate_warning_signs`, `validate_diet_advice`, `validate_follow_ons` | The individual checks. |
+| `validate_medications`, `validate_tasks`, `validate_appointments`, `validate_restrictions`, `validate_monitoring`, `validate_warning_signs`, `validate_allergies`, `validate_diet_advice`, `validate_follow_ons` | The individual checks. |
 | `contains_uncertainty(value)` | True if the text carries an uncertainty marker. |
 | `load_schema()`, `schema_text()`, `SCHEMA_FILENAME` | The bundled extraction schema as a dict, as text, and its file name. |
-| `RecoveryState`, `Medication`, `Task`, `FollowOn`, `Appointment`, `Restriction`, `Monitoring`, `WarningSign`, `DietAdvice`, `Source` | The dataclasses the checks work on. |
+| `RecoveryState`, `Medication`, `Task`, `FollowOn`, `Appointment`, `Restriction`, `Monitoring`, `WarningSign`, `DietAdvice`, `Allergy`, `Source` | The dataclasses the checks work on. |
 
 ## Licence
 

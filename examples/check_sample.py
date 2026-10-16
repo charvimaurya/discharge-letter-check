@@ -13,6 +13,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 from discharge_letter_check import (
+    Allergy,
     Appointment,
     DietAdvice,
     FollowOn,
@@ -34,7 +35,7 @@ RESULT_PATH = EXAMPLES / "sample_result.json"
 DOCUMENT_ID = "synthetic-letter-001"
 CATEGORIES = [
     "medications", "tasks", "appointments", "restrictions",
-    "monitoring", "warning_signs", "diet_advice",
+    "monitoring", "warning_signs", "diet_advice", "allergies",
 ]
 
 
@@ -60,6 +61,7 @@ def build_extracted_state() -> RecoveryState:
     invented = "Eat five portions of fruit a day."
     wound_check = "Wound check with the practice nurse on 23 October 2026."
     warning = "If your wound becomes red, hot or swollen, contact your care team."
+    allergy = "Allergic to Examplicillin (synthetic)."
 
     return RecoveryState(
         patient_id="synthetic-patient-001",
@@ -98,6 +100,9 @@ def build_extracted_state() -> RecoveryState:
         diet_advice=[
             DietAdvice("diet_1", water, source=_source(water)),
             DietAdvice("diet_2", invented, source=_source(invented)),
+        ],
+        allergies=[
+            Allergy("allergy_1", allergy, source=_source(allergy)),
         ],
     )
 

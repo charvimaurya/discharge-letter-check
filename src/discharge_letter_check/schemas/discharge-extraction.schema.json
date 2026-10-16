@@ -908,6 +908,76 @@
       },
       "title": "Diet Advice",
       "type": "array"
+    },
+    "allergies": {
+      "description": "Each allergy the letter states, one item per allergy, copied word for word. Empty or left out if the letter states none.",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "description": "The allergy, word for word, as written in the letter.",
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          },
+          "source": {
+            "additionalProperties": false,
+            "description": "Where in the letter an item came from.",
+            "properties": {
+              "snippet": {
+                "description": "The sentence from the letter, copied word for word.",
+                "title": "Snippet",
+                "type": "string"
+              },
+              "page": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Page number in the letter, starting at 1.",
+                "title": "Page"
+              },
+              "document_id": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "description": "Set by the pipeline, not by the model.",
+                "title": "Document Id"
+              },
+              "read_from_image": {
+                "default": false,
+                "description": "True if this text was read from a photo or scan.",
+                "title": "Read From Image",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "snippet"
+            ],
+            "title": "SourceEvidence",
+            "type": "object"
+          }
+        },
+        "required": [
+          "text",
+          "source"
+        ],
+        "title": "Allergy",
+        "type": "object"
+      },
+      "title": "Allergies",
+      "type": "array"
     }
   },
   "title": "ExtractedDischarge",

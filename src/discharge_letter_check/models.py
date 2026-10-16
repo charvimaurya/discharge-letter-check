@@ -115,6 +115,14 @@ class DietAdvice:
 
 
 @dataclass
+class Allergy:
+    id: str
+    text: str
+    needs_confirmation: bool = False
+    source: Optional[Source] = None
+
+
+@dataclass
 class RecoveryState:
     patient_id: str
     document_id: str
@@ -142,3 +150,6 @@ class RecoveryState:
 
     # Patient's local timezone for future reminder scheduling.
     timezone: str = "Europe/London"
+
+    # Last, so existing fields keep their positions; empty when the letter lists none.
+    allergies: list[Allergy] = field(default_factory=list)

@@ -27,6 +27,9 @@ def test_sample_result_flags_only_the_ambiguous_instruction():
     flagged = sample["recovery_state"]["medications"][1]
     assert flagged["dose"] == "[?1 or 2 tablets?]"
     assert sample["recovery_state"]["tasks"][1]["follow_on"]["duration_minutes"] == 20
+    assert [a["text"] for a in sample["recovery_state"]["allergies"]] == [
+        "Allergic to Examplicillin (synthetic).",
+    ]
 
 
 def test_example_files_are_marked_synthetic():

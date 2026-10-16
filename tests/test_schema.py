@@ -5,16 +5,16 @@ import re
 import subprocess
 import sys
 from importlib import resources
-from importlib.metadata import files
+from importlib.metadata import files, version
 
 import pytest
 
-from discharge_letter_check import SCHEMA_FILENAME, load_schema, schema_text
+from discharge_letter_check import SCHEMA_FILENAME, SCHEMA_VERSION, __version__, load_schema, schema_text
 
 
 CATEGORIES = [
     "medications", "tasks", "appointments", "restrictions",
-    "monitoring", "warning_signs", "diet_advice",
+    "monitoring", "warning_signs", "diet_advice", "allergies",
 ]
 
 
@@ -38,7 +38,7 @@ def test_schema_loads_from_the_installed_package_outside_the_repository(tmp_path
     )
 
     assert result.returncode == 0, result.stderr
-    assert result.stdout.split() == ["ExtractedDischarge", "8"]
+    assert result.stdout.split() == ["ExtractedDischarge", "9"]
 
 
 def test_installed_distribution_can_find_the_schema():
@@ -123,3 +123,11 @@ def test_clock_time_rejects_an_invalid_minute():
 
 def test_clock_time_rejects_a_missing_leading_zero():
     assert not _is_clock_time("7:30")
+
+
+def test_schema_version():
+    assert SCHEMA_VERSION == "0.2.0"
+
+
+def test_package_version_matches_the_installed_version():
+    assert __version__ == version("discharge-letter-check")

@@ -8,6 +8,9 @@ Patient: Test Patient (synthetic)
 Date of discharge: 16 October 2026
 Procedure: Example knee procedure (synthetic)
 
+ALLERGIES
+Allergic to Examplicillin (synthetic).
+
 MEDICINES
 Examplamol 500 mg tablets: take 2 tablets 4 times a day for 14 days.
 Samplexin 30 mg tablets: take 1 or 2 tablets (handwritten amendment, unclear) only if needed for pain.

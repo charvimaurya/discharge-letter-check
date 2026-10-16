@@ -165,6 +165,19 @@
     "ingestion_status": "ready",
     "pending_checkin": null,
     "last_updated": null,
-    "timezone": "Europe/London"
+    "timezone": "Europe/London",
+    "allergies": [
+      {
+        "id": "allergy_1",
+        "text": "Allergic to Examplicillin (synthetic).",
+        "needs_confirmation": false,
+        "source": {
+          "document_id": "synthetic-letter-001",
+          "snippet": "Allergic to Examplicillin (synthetic).",
+          "page": 1,
+          "read_from_image": false
+        }
+      }
+    ]
   }
 }
