@@ -1,5 +1,9 @@
 # discharge-letter-check
 
+[![tests](https://github.com/charvimaurya/discharge-letter-check/actions/workflows/tests.yml/badge.svg)](https://github.com/charvimaurya/discharge-letter-check/actions/workflows/tests.yml)
+
+Checks data an AI pulled out of a discharge letter and flags anything a person must confirm, so a recovery assistant never guesses a dose or a date.
+
 **Synthetic data only. Not a medical device.**
 
 A small Python library that checks instructions *already extracted* from a hospital
